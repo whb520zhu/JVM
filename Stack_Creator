@@ -1,0 +1,68 @@
+import java.util.Stack;
+
+public class Stack_Creator {
+    private int count;//栈中元素的数量
+    Stack<Integer> stack=new Stack<Integer>();
+
+    public void push(int a){
+        System.out.println("正在进行PUSH操作");
+        stack.push(a);
+        System.out.println("将"+a+"压入栈内");
+        System.out.println("栈内元素为"+stack);
+    }
+
+    public void add(Stack<Integer> stack){
+        int a=stack.pop();
+        System.out.println("a出栈"+"值："+a);
+        int b=stack.pop();
+        System.out.println("出栈"+"值："+b);
+
+        int c=a+b;
+        System.out.println("相加后结果"+c);
+
+        stack.push(c);
+        System.out.println("将c进栈");
+        System.out.println("栈内元素为"+stack);
+    }
+
+    public void sub(Stack<Integer> stack){
+        int a=stack.pop();
+        System.out.println("a出栈"+"值："+a);
+        int b=stack.pop();
+        System.out.println("出栈"+"值："+b);
+        int c=b-a;
+        System.out.println("相减后结果"+c);
+        stack.push(c);
+        System.out.println("将c进栈");
+        System.out.println("栈内元素为"+stack);
+    }
+
+    //复制栈顶的元素
+    public void dup(Stack<Integer> stack){
+        int length=stack.size();
+//        System.out.println();
+//        System.out.println("栈的大小为"+length);
+        int top=stack.lastElement();
+        System.out.println("取栈顶元素"+top);
+        System.out.println("再将栈顶元素"+top+"压入栈内");
+        stack.push(top);
+        System.out.println("栈内元素为"+stack);
+    }
+
+    //IFNE 方法
+
+    public int ifne(Stack<Integer> stack,int pc,int off){
+        int a=stack.pop();
+        if (a!=0){
+            pc=pc+off-1;
+            System.out.println("栈顶元素不为0，跳转到到"+pc);
+            return pc;
+        }else {
+            System.out.println("栈顶元素为0，退出");
+            System.exit(0);
+        }
+        return 99;
+    }
+
+
+}
